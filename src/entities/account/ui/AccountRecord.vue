@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref, useTemplateRef } from 'vue'
 import { accountTypes, useAccountStore, type Account, type AccountType } from '../model'
+import { validationRules } from '@/shared'
 
 const { account } = defineProps<{ account: Account }>()
 const accountStore = useAccountStore()
@@ -82,16 +83,18 @@ function deleteAccount() {
             v-model="fields.login"
             label="Логин"
             maxlength="100"
+            :rules="[validationRules.required()]"
             @blur="saveAccount"
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col v-if="fields.type === 'Локальная'">
           <v-text-field
             class="password-field"
             v-model="fields.password"
             label="Пароль"
             maxlength="100"
+            :rules="[validationRules.required()]"
             @blur="saveAccount"
           ></v-text-field>
         </v-col>
