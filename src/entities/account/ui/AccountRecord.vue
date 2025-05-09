@@ -7,6 +7,7 @@ const { account } = defineProps<{ account: Account }>()
 const accountStore = useAccountStore()
 const form = useTemplateRef('form')
 const valid = ref(true)
+const showPassword = ref(false)
 const fields = reactive<{
   tags: string
   type: AccountType
@@ -96,6 +97,9 @@ function deleteAccount() {
             maxlength="100"
             :rules="[validationRules.required()]"
             @blur="saveAccount"
+            :append-inner-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="showPassword ? 'text' : 'password'"
+            @click:append-inner="showPassword = !showPassword"
           ></v-text-field>
         </v-col>
 
