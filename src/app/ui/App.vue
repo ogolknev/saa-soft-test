@@ -1,8 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { AccountManagementWidget } from '@/widgets'
+</script>
 
 <template>
   <v-app theme="dark">
-    <v-main max-height="100dvh"> </v-main>
+    <v-main max-height="100dvh">
+      <AccountManagementWidget />
+    </v-main>
   </v-app>
 </template>
 

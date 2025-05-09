@@ -103,7 +103,7 @@ function deleteAccount() {
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="auto">
           <v-btn
             class="delete-button"
             icon="mdi-trash-can"
