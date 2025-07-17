@@ -1,7 +1,7 @@
 import type z from 'zod'
 import { accountSchema } from './schema'
+import type { accountTypes } from '../config/account-types'
 
-export const accountTypes = ['Локальная', 'LDAP'] as const
 export type AccountType = (typeof accountTypes)[number]
 
 export type Account = z.output<typeof accountSchema>

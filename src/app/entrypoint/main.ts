@@ -6,6 +6,7 @@ import ui from '@nuxt/ui/vue-plugin'
 
 import Root from '../ui/Root.vue'
 import routes from '../routes/routes'
+import '../style/main.css'
 
 const app = createApp(Root)
 const pinia = createPinia()

@@ -1,5 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { AccountForm } from '@/entities/account'
+</script>
 
 <template>
-  <div></div>
+  <div>
+    <AccountForm />
+  </div>
 </template>

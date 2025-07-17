@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { accountTypes } from './interface'
+import { accountTypes } from '../config/account-types'
 
 export const accountSchema = z
   .object({

@@ -10,6 +10,11 @@ declare module 'vue' {
   export interface GlobalComponents {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    UApp: typeof import('./node_modules/.pnpm/@nuxt+ui@3.2.0_@babel+parser@7.28.0_embla-carousel@8.6.0_typescript@5.8.3_vite@7.0.5_@t_6e57becbca7d8765dacb0d062c396367/node_modules/@nuxt/ui/dist/runtime/components/App.vue')['default']
+    UApp: typeof import('./node_modules/.pnpm/@nuxt+ui@3.2.0_@babel+parser@7.28.0_embla-carousel@8.6.0_typescript@5.8.3_vite@7.0.5_@t_0d634c657a7cb2dc974b337b77069b3e/node_modules/@nuxt/ui/dist/runtime/components/App.vue')['default']
+    UButton: typeof import('./node_modules/.pnpm/@nuxt+ui@3.2.0_@babel+parser@7.28.0_embla-carousel@8.6.0_typescript@5.8.3_vite@7.0.5_@t_0d634c657a7cb2dc974b337b77069b3e/node_modules/@nuxt/ui/dist/runtime/components/Button.vue')['default']
+    UForm: typeof import('./node_modules/.pnpm/@nuxt+ui@3.2.0_@babel+parser@7.28.0_embla-carousel@8.6.0_typescript@5.8.3_vite@7.0.5_@t_0d634c657a7cb2dc974b337b77069b3e/node_modules/@nuxt/ui/dist/runtime/components/Form.vue')['default']
+    UFormField: typeof import('./node_modules/.pnpm/@nuxt+ui@3.2.0_@babel+parser@7.28.0_embla-carousel@8.6.0_typescript@5.8.3_vite@7.0.5_@t_0d634c657a7cb2dc974b337b77069b3e/node_modules/@nuxt/ui/dist/runtime/components/FormField.vue')['default']
+    UInput: typeof import('./node_modules/.pnpm/@nuxt+ui@3.2.0_@babel+parser@7.28.0_embla-carousel@8.6.0_typescript@5.8.3_vite@7.0.5_@t_0d634c657a7cb2dc974b337b77069b3e/node_modules/@nuxt/ui/dist/runtime/components/Input.vue')['default']
+    USelect: typeof import('./node_modules/.pnpm/@nuxt+ui@3.2.0_@babel+parser@7.28.0_embla-carousel@8.6.0_typescript@5.8.3_vite@7.0.5_@t_0d634c657a7cb2dc974b337b77069b3e/node_modules/@nuxt/ui/dist/runtime/components/Select.vue')['default']
   }
 }
