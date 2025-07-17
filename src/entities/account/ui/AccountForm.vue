@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref, useTemplateRef } from 'vue'
-import { type Account, type AccountCreate } from '../model/interface'
+import { onMounted, ref, useTemplateRef } from 'vue'
+import { type AccountData, type AccountCreate, type Account } from '../model/interface'
 import { accountSchema } from '../model/schema'
 import { accountTypes } from '../config/account-types'
 import type { FormSubmitEvent } from '@nuxt/ui'
 
-const emit = defineEmits<{ submit: [event: { data: Account }]; delete: [] }>()
+const emit = defineEmits<{ submit: [event: { data: AccountData | Account }]; delete: [] }>()
+const props = defineProps<{ initialState?: Account }>()
 
 const form = useTemplateRef('form')
 const state = ref<AccountCreate>({
@@ -15,7 +16,7 @@ const state = ref<AccountCreate>({
   password: '',
 })
 
-function onSubmit(event: FormSubmitEvent<Account>) {
+function onSubmit(event: FormSubmitEvent<AccountData>) {
   console.dir(event)
 
   const data = event.data
@@ -25,12 +26,21 @@ function onSubmit(event: FormSubmitEvent<Account>) {
     tags: data.tags.join('; '),
   }
 
-  emit('submit', { data })
+  emit('submit', { data: { ...data, id: props.initialState?.id } })
 }
 
 function onDelete() {
   emit('delete')
 }
+
+onMounted(() => {
+  if (props.initialState) {
+    state.value = {
+      ...props.initialState,
+      tags: props.initialState.tags.join('; '),
+    }
+  }
+})
 </script>
 
 <template>
@@ -56,6 +66,12 @@ function onDelete() {
       <UInput v-model="state.password" placeholder="Пароль" type="password" @blur="form?.submit" />
     </UFormField>
 
-    <UButton icon="lucide:trash" color="error" variant="soft" @click="onDelete" />
+    <UButton
+      class="self-start"
+      icon="lucide:trash"
+      color="error"
+      variant="soft"
+      @click="onDelete"
+    />
   </UForm>
 </template>
