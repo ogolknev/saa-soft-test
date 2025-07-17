@@ -19,14 +19,18 @@ const state = ref<AccountCreate>({
 function onSubmit(event: FormSubmitEvent<AccountData>) {
   console.dir(event)
 
-  const data = event.data
+  let data: Account | AccountData = event.data
 
   state.value = {
     ...data,
     tags: data.tags.join('; '),
   }
 
-  emit('submit', { data: { ...data, id: props.initialState?.id } })
+  if (props.initialState) {
+    data = { ...data, id: props.initialState.id }
+  }
+
+  emit('submit', { data })
 }
 
 function onDelete() {
@@ -44,21 +48,22 @@ onMounted(() => {
 </script>
 
 <template>
-  <UForm ref="form" :schema="accountSchema" :state class="flex gap-2" @submit="onSubmit">
+  <UForm
+    ref="form"
+    :schema="accountSchema"
+    :state
+    class="grid grid-cols-[repeat(4,minmax(0,1fr))_auto] gap-2"
+    @submit="onSubmit"
+  >
     <UFormField name="tags">
       <UInput v-model="state.tags" placeholder="Метки" @blur="form?.submit" />
     </UFormField>
 
     <UFormField name="type">
-      <USelect
-        class="min-w-50"
-        v-model="state.type"
-        :items="accountTypes.slice()"
-        @change="form?.submit"
-      />
+      <USelect v-model="state.type" :items="accountTypes.slice()" @change="form?.submit" />
     </UFormField>
 
-    <UFormField name="login">
+    <UFormField :class="state.type === 'LDAP' ? 'col-span-2' : ''" name="login">
       <UInput v-model="state.login" placeholder="Логин" @blur="form?.submit" />
     </UFormField>
 

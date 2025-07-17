@@ -16,7 +16,7 @@ export const accountSchema = z
     login: z.string().nonempty('Обязательное поле').max(100, 'Максимум 100 символов'),
     password: z.string().max(100, 'Максимум 100 символов').nullable(),
   })
-  .refine((data) => data.type === 'Локальная' && data.password, {
+  .refine((data) => (data.type === 'Локальная' && data.password) || data.type === 'LDAP', {
     error: 'Обязательное поле',
     path: ['password'],
   })
